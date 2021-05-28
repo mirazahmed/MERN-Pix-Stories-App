@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({baseURL: 'http://localhost:5000' })
+const API = axios.create({baseURL: 'https://mern-picture-blog.herokuapp.com/posts' })
 API.interceptors.request.use((req) =>{
     if(localStorage.getItem('profile')){
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
@@ -9,7 +9,7 @@ API.interceptors.request.use((req) =>{
     return req;
 })
 
-
+// http://localhost:5000
 // const url = 'https://mern-picture-blog.herokuapp.com/posts';
 
 export const fetchPosts = () => API.get('/posts');
